@@ -150,10 +150,9 @@ class App extends Component {
 
   nameSearch(name) {
     let searchLetters = this.searchLetters.value;
-    axios.get(`https://joes-autos.herokuapp.com/api/buyers?searchletters=${name}`)
+    axios.get(`https://joes-autos.herokuapp.com/api/buyers?name=${searchLetters}`)
     .then((response)=>{
-      const obj = {buyersToDisplay: response.data}
-      this.setState(obj)
+      this.setState({buyersToDisplay: response.data.buyers})
       toast.success('found')
     }).catch(() =>{
     toast.error('buyer found')
